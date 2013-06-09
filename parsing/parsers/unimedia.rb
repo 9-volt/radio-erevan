@@ -4,23 +4,6 @@ require 'json'
 
 class Parsers::Unimedia < Parsers::Base
   class << self
-    def fetch(url)
-      # The URL is a permalink that looks like http://unimedia.info/stiri/permalink-61799.html
-
-      doc = get_page(url)
-
-      true_sentences = parse_sentences(doc).map do |s|
-        Parsers::Sentence.new(text: s)
-      end
-
-      Parsers::Article.new(source: 'unimedia',
-                           time: parse_metadata(doc),
-                           author: parse_author(doc),
-                           url: url,
-                           category: parse_category(doc),
-                           title: parse_title(doc),
-                           sentences: true_sentences)
-    end
 
     private
 
