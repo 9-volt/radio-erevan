@@ -19,3 +19,10 @@ task :populate_urls do
     puts "#{id} => #{article_url}"
   end
 end
+
+namespace :fetch do
+  require_relative "./db_setup"
+  task :unimedia do
+    Launchers::Unimedia.launch
+  end
+end
