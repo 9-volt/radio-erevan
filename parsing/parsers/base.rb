@@ -25,6 +25,10 @@ module Parsers
 
   class Base
     class << self
+      def get_page(url)
+        Nokogiri::HTML(open url)
+      end
+
       def fetch
         raise ParserError.new('Parser not yet implemented')
       end

@@ -24,10 +24,6 @@ class Parsers::Unimedia < Parsers::Base
 
     private
 
-      def get_page(url)
-        Nokogiri::HTML(open url)
-      end
-
       def parse_metadata(doc)
         metadata_container = doc.css('#content .left-container .news-details .white-v-separator')
         convert_time(metadata_container.children.first.text)
