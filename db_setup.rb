@@ -17,3 +17,4 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 require_relative 'parsing/parsers'
+require_relative 'parsing/fetchers/unimedia'
