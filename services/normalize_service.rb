@@ -12,6 +12,8 @@ class NormalizeService
             :normalized_form => parts[1],
             :racai_response => racai_flags
           }
+        end.select do |hash|
+          hash[:initial_form] != '.'
         end
       end
     end
