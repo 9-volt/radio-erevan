@@ -11,6 +11,7 @@ module Parsers
   class Article
     include Virtus
 
+    attribute :source,    String
     attribute :time,      Time
     attribute :author,    String
     attribute :url,       String

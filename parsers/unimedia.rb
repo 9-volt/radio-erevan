@@ -13,7 +13,8 @@ class Parsers::Unimedia < Parsers::Base
         Parsers::Sentence.new(text: s)
       end
 
-      Parsers::Article.new(time: parse_metadata(doc),
+      Parsers::Article.new(source: 'unimedia',
+                           time: parse_metadata(doc),
                            author: parse_author(doc),
                            url: url,
                            category: parse_category(doc),
