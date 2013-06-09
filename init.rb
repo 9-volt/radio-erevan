@@ -13,3 +13,4 @@ DataMapper.auto_upgrade!
 
 #require other classes
 require_relative './services/racai.rb'
+require_relative './services/normalize_service.rb'
