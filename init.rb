@@ -11,3 +11,5 @@ Dir[File.dirname(__FILE__) + "/models/*.rb"].each {|f| require f }
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
+#require other classes
+require_relative './services/racai.rb'
