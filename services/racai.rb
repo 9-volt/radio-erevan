@@ -1,17 +1,16 @@
 require 'savon'
 
 class Racai
-  attr_reader :client
-  def initialize wsdl='http://www.racai.ro/webservices/TextProcessing.asmx?WSDL'
-    @client = Savon.client(:wsdl => wsdl)
-  end
+  class << self
+    def client
+      @client ||= Savon.client({
+        :wsdl => 'http://www.racai.ro/webservices/TextProcessing.asmx?WSDL'
+      })
+    end
 
-  def normalize word
-    resp = @client.call(:process, message: {input: word, lang: 'ro'})
-    resp.body[:process_response][:process_result]
-  end
-
-  def normalize_words words
-    normalize(words.join(' ')).split(' ')
+    def normalize text
+      resp = client.call(:process, message: {input: text, lang: 'ro'})
+      resp.body[:process_response][:process_result]
+    end
   end
 end
