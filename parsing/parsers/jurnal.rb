@@ -4,23 +4,6 @@ require 'json'
 
 class Parsers::Jurnal < Parsers::Base
   class << self
-    def fetch(url)
-      # http://jurnal.md/ro/news/scrisorile-lui-buraga-lupu-ca-ou-1151985/
-      doc = get_page(url)
-
-      true_sentences = parse_sentences(doc).map do |s|
-        Parsers::Sentence.new(text: s)
-      end
-
-      Parsers::Article.new(source: 'jurnal',
-                           time: parse_metadata(doc),
-                           author: parse_author(doc),
-                           url: url,
-                           category: parse_category(doc),
-                           title: parse_title(doc),
-                           sentences: true_sentences)
-    end
-
     private
 
       def parse_metadata(doc)

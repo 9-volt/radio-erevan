@@ -4,21 +4,6 @@ require 'json'
 
 class Parsers::Publika < Parsers::Base
   class << self
-    def fetch(url)
-      doc = get_page(url)
-
-      true_sentences = parse_sentences(doc).map do |s|
-        Parsers::Sentence.new(text: s)
-      end
-
-      Parsers::Article.new(source: 'publika',
-                           time: parse_metadata(doc),
-                           author: parse_author(doc),
-                           url: url,
-                           category: parse_category(doc),
-                           title: parse_title(doc),
-                           sentences: true_sentences)
-    end
 
     private
 
