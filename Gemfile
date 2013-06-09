@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri'
-gem 'json'
-gem 'virtus'
-gem 'data_mapper'
-gem 'dm-postgres-adapter'
-gem 'rake'
+gem 'nokogiri', '~> 1.6.0'
+gem 'json', '~> 1.8.0'
+gem 'virtus', '~> 0.5.5'
+gem 'data_mapper', '~> 1.2.0'
+
+gem 'dm-postgres-adapter', '~> 1.2.0'
+gem 'rake', '~> 10.0.4'
+gem 'savon', '~> 2.2.0'
