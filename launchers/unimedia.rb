@@ -4,8 +4,10 @@ module Launchers end
 
 class Launchers::Unimedia
   def self.launch
-    URL.all(source: 'unimedia', parsed: 'false').each do |url|
-      UnimediaParserJob.perform_async(url.id)
+    puts 'Unimedia launcher starting'
+    URL.all(source: 'unimedia', parsed: 'false').take(5).each do |url|
+      ParseUnimediaJob.perform_async(url.id)
+      puts "Parsing Unimedia URL #{url.url}"
     end
   end
 end
