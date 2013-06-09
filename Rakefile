@@ -1,4 +1,3 @@
-
 task :console do
   require 'irb'
   require_relative "./init"
