@@ -25,12 +25,24 @@ module Parsers
 
   class Base
     class << self
-      def get_page(url)
-        Nokogiri::HTML(open url)
+      def fetch(url)
+        doc = get_page(url)
+
+        true_sentences = parse_sentences(doc).map do |s|
+          Parsers::Sentence.new(text: s)
+        end
+
+        Parsers::Article.new(source: self.name.split('::').last.downcase,
+                             time: parse_metadata(doc),
+                             author: parse_author(doc),
+                             url: url,
+                             category: parse_category(doc),
+                             title: parse_title(doc),
+                             sentences: true_sentences)
       end
 
-      def fetch
-        raise ParserError.new('Parser not yet implemented')
+      def get_page(url)
+        Nokogiri::HTML(open url)
       end
     end
   end
