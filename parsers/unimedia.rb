@@ -2,26 +2,23 @@ require 'open-uri'
 require 'nokogiri'
 require 'json'
 
-class ParserError < StandardError
-end
-
-module Parsers
-end
-
-class Parsers::Unimedia
+class Parsers::Unimedia < Parsers::Base
   class << self
     def fetch(url)
       # The URL is a permalink that looks like http://unimedia.info/stiri/permalink-61799.html
 
       doc = get_page(url)
-      raise ParserError unless doc
 
-      hash = { time: parse_metadata(doc),
-               author: parse_author(doc),
-               url: url,
-               category: parse_category(doc),
-               title: parse_title(doc),
-               sentences: parse_sentences(doc) }
+      true_sentences = parse_sentences(doc).map do |s|
+        Parsers::Sentence.new(text: s)
+      end
+
+      Parsers::Article.new(time: parse_metadata(doc),
+                           author: parse_author(doc),
+                           url: url,
+                           category: parse_category(doc),
+                           title: parse_title(doc),
+                           sentences: true_sentences)
     end
 
     private
