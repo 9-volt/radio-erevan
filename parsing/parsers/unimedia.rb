@@ -34,7 +34,12 @@ class Parsers::Unimedia < Parsers::Base
       end
 
       def parse_author(doc)
-        doc.css('#content .display-block').text.match(/Autor: (?<author>.+)/)[:author]
+        element = doc.css('#content .display-block')
+        if element
+          ''
+        else
+          element.text.match(/Autor: (?<author>.+)/)[:author]
+        end
       end
 
       def parse_category(doc)

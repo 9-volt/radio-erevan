@@ -1,4 +1,7 @@
-class ParserError::StandardError
+require 'virtus'
+
+class ParserError < StandardError
+end
 
 module Parsers
 
