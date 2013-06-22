@@ -9,5 +9,5 @@ The gist of it: `rake -P` to see all the tasks (someone, make it work with `rake
 * Launch sidekiq with `sidekiq -r ./db_setup.rb`
 * Write the `whenever` cron file to the crontab
 * Relax for a couple of days.
-* PARSY!!!
+* :cocktail: :tada: :cocktail: :tada: :cocktail: PARSY!!! :cocktail: :tada: :cocktail: :tada: :cocktail:
 
