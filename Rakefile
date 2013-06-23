@@ -20,10 +20,7 @@ end
 
 namespace :fetch do
   require_relative "./db_setup"
-  task :unimedia do
-    Launchers::Unimedia.launch
-  end
-  task :publika do
-    Launchers::Publika.launch
+  task :everything do
+    JobLauncher.launch!
   end
 end
