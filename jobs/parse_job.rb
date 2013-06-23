@@ -2,18 +2,17 @@ require 'sidekiq'
 require_relative '../db_setup'
 require 'lumberjack'
 
-logger = Lumberjack::Logger.new("logs/sidekiq.log")
 
-class ParsePublikaJob
+class ParseJob
   include Sidekiq::Worker
-  #sidekiq_options :queue => :unimedia_parsers
+  logger = Lumberjack::Logger.new("logs/sidekiq.log")
 
   def perform(url_id)
     url = URL.get(url_id)
     begin
-      Fetchers::Publika.fetch(url)
+      ArticleFetcher.fetch(url)
+      p "Properly fetched #{url.url}"
     rescue Exception => e
-      logger.error("BOOM! The URL was parsed in a wrong way!")
       logger.error(url)
       logger.error(e)
       url.update(error: true)

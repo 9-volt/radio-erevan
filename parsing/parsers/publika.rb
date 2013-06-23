@@ -4,7 +4,6 @@ require 'json'
 
 class Parsers::Publika < Parsers::Base
   class << self
-
     private
 
       def parse_metadata(doc)

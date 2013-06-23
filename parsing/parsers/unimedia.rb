@@ -4,7 +4,6 @@ require 'json'
 
 class Parsers::Unimedia < Parsers::Base
   class << self
-
     private
 
       def parse_metadata(doc)
