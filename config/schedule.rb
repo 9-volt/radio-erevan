@@ -24,4 +24,12 @@ require File.expand_path('db_setup')
 set :output, 'log/whenever.log'
 every 1.minutes do
   rake 'fetch:unimedia'
+  rake 'fetch:publika'
 end
+
+every 30.minutes do
+  rake 'update_urls:publika'
+  rake 'update_urls:unimedia'
+end
+
+
