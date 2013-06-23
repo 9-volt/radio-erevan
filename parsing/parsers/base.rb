@@ -1,8 +1,4 @@
 require 'virtus'
-
-class ParserError < StandardError
-end
-
 module Parsers
 
   class Sentence

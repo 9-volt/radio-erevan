@@ -23,8 +23,7 @@ require File.expand_path('db_setup')
 
 set :output, 'log/whenever.log'
 every 1.minutes do
-  rake 'fetch:unimedia'
-  rake 'fetch:publika'
+  rake 'fetch:everything'
 end
 
 every 30.minutes do
