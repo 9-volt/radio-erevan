@@ -11,6 +11,7 @@ class ParseJob
     url = URL.get(url_id)
     begin
       ArticleFetcher.fetch(url)
+      p "Properly fetched #{url.url}"
     rescue Exception => e
       logger.error(url)
       logger.error(e)
