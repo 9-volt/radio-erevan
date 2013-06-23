@@ -9,12 +9,8 @@ class ArticleFetcher
       url.update(parsed: true)
     end
 
-    # TODO: replace this with a proper message sent to the parser
     def find_parser(url)
-      case url.url
-      when /publika.md/         then Parsers::Publika
-      when /unimedia.[info|md]/ then Parsers::Unimedia
-      end
+      Parsers.const_get(url.source.capitalize.to_sym)
     end
 
     def dump_article!(article)
