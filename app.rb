@@ -1,3 +1,4 @@
+require 'require_all'
 require_relative 'db_setup'
 
 require_rel 'jobs'
