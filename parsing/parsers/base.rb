@@ -1,4 +1,8 @@
 require 'virtus'
+require 'open-uri'
+require 'nokogiri'
+require 'json'
+
 module Parsers
 
   class Sentence
