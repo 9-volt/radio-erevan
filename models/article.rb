@@ -7,7 +7,7 @@ class Article
   property :author,   String
   property :url,      Text
   property :category, String
-  property :title,    String,  length: 128
+  property :title,    String,  length: 255
 
   has n, :sentences
 end
