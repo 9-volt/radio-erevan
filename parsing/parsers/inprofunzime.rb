@@ -1,4 +1,4 @@
-class Parsers::Protv < Parsers::Base
+class Parsers::Inprofunzime < Parsers::Base
   class << self
     def parse_metadata doc
       convert_time doc.css('.boxTime').children.first.text

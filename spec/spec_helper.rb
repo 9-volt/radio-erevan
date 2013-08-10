@@ -2,7 +2,6 @@ ENV['EREVAN_ENV'] ||= 'test'
 
 require 'rspec'
 require 'factory_girl'
-require 'database_cleaner'
 
 require_relative '../db_setup'
 require_relative 'factories/factories'
