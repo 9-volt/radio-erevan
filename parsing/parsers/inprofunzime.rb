@@ -1,7 +1,7 @@
 class Parsers::Inprofunzime < Parsers::Base
   class << self
     def parse_metadata doc
-      convert_time doc.css('.boxTime').children.first.text
+      convert_time doc.css('.boxStire .boxTime').children.first.text
     end
 
     def parse_author doc
