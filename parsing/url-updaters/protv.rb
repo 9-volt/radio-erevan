@@ -27,19 +27,19 @@ module URLUpdaters
           status = save_links! links
 
           if status == SAVE_STATUS::LINKS_SAVED
+            sleep 5
             update_links_for_category! category, page + 1
           end
         end
       end
 
       def save_links! links
-        puts "saving #{links.inspect}"
+        puts "saving #{links.count} links"
 
         already_saved_links = URL.all :conditions => ['url in ?', links]
-
         links.each {|url| URL.first_or_create :source => 'protv', :url => url }
 
-        if already_saved_links.any?
+        if already_saved_links.count == links.count and !ENV['ALL']
           SAVE_STATUS::LINKS_PARTIALLY_SAVED
         else
           SAVE_STATUS::LINKS_SAVED
@@ -52,7 +52,7 @@ module URLUpdaters
         end.compact
       end
 
-      def archive_page (category, page=1)
+      def archive_page category, page=1
         "http://protv.md/arhiva/#{category}/pagina-#{page}.html"
       end
     end
