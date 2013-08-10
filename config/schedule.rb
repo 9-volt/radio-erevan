@@ -26,9 +26,10 @@ every 1.minutes do
   rake 'fetch:everything'
 end
 
-every 30.minutes do
+every 12.hours do
   rake 'update_urls:publika'
   rake 'update_urls:unimedia'
+  rake 'update_urls:jurnal'
 end
 
 
