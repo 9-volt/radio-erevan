@@ -30,7 +30,7 @@ class Parsers::Jurnal < Parsers::Base
       end
 
       def parse_sentences(doc)
-        doc.css('#news_block tr td').first.text.split('.').map(&:strip)
+        doc.css('#news_block tr td').first.text.split(/[\.!?]/).map(&:strip)
       end
 
       def parse_title(doc)

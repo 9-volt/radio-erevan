@@ -23,7 +23,7 @@ class Parsers::Publika < Parsers::Base
       end
 
       def parse_sentences(doc)
-        doc.css('div#articleLeftColumn p').text.split('.').map(&:strip)
+        doc.css('div#articleLeftColumn p').text.split(/[\.!?]/).map(&:strip)
       end
 
       def parse_title(doc)
