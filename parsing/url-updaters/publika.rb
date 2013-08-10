@@ -12,7 +12,7 @@ class URLUpdaters::Publika
       # get the ID of the last URL in the database
       # we don't care if it's parsed or not, we just need to update the DB of URLS
       last_url = URL.last(source: "publika") || NilURL.new
-      p last_url
+      p last_url.url
 
       # let's get the permalink id of that
       last_permalink_id = last_url.url.match(/\d+/)[0].to_i
@@ -48,7 +48,7 @@ class URLUpdaters::Publika
 
       doc.css('.newsTitle a').first
          .attributes["href"].value
-         .match(/\d+/)[0].to_i
+         .scan(/\d+/).last.to_i
     end
   end
 end
