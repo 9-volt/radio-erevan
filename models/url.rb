@@ -2,7 +2,7 @@ class URL
   include DataMapper::Resource
 
   property :id,         Serial
-  property :url,        String,   unique: true
+  property :url,        String,   unique: true, length: 255
   property :source,     String    # String for now, need to include the association
                                   # this is "unimedia", "jurnal", etc.
   property :parsed,     Boolean,  default: false, index: true
