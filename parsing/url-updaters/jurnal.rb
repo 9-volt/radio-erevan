@@ -12,7 +12,7 @@ class URLUpdaters::Jurnal
       doc = Nokogiri::XML(xml)
 
       doc.css('link').uniq.each do |link|
-        pp link
+        URL.create(source: "jurnal", url: link)
       end
       # we're done!
       puts "WOOHOO!"
