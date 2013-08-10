@@ -13,7 +13,7 @@ class URLUpdaters::Jurnal
 
       doc.css('link').map(&:text).uniq.each do |link|
         # create a link only if it has a digit in the url, so that random links from the RSS won't get in
-        URL.create!(source: "jurnal", url: link) if link.match /\d/
+        URL.create(source: "jurnal", url: link) if link.match /\d/
       end
       # we're done!
       puts "WOOHOO!"
