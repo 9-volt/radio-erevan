@@ -14,7 +14,7 @@ class ArticleFetcher
     end
 
     def dump_article!(article)
-      a = Article.create(source:    article.source,
+      a = Article.create!(source:    article.source,
                          time:      article.time,
                          author:    article.author,
                          category:  article.category,
