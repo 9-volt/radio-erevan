@@ -11,12 +11,19 @@ class URLUpdaters::Jurnal
       xml = open('http://jurnal.md/ro/rss.xml').read
       doc = Nokogiri::XML(xml)
 
-      doc.css('link').map(&:text).uniq.each do |link|
-        # create a link only if it has a digit in the url, so that random links from the RSS won't get in
-        URL.create(source: "jurnal", url: link) if link.match /\d/
+      links = doc.css('link').map(&:text).uniq
+      success = 0
+
+      links.each do |link|
+        # create a link only if it has a digit in the url,
+        # so that random links from the RSS won't get in
+
+        if link.match /\d/
+          success == 1 if URL.create(source: "jurnal", url: link)
+        end
       end
       # we're done!
-      puts "WOOHOO!"
+      p "Imported #{success} out of #{links.count}"
     end
   end
 end
