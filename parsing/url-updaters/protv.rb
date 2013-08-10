@@ -35,10 +35,10 @@ module URLUpdaters
 
       def save_links! links
         puts "saving #{links.count} links"
+        links.each {|url| URL.first_or_create :source => 'protv', :url => url }
+        return SAVE_STATUS::LINKS_SAVED if ENV['ALL']
 
         already_saved_links = URL.all :conditions => ['url in ?', links]
-        links.each {|url| URL.first_or_create :source => 'protv', :url => url }
-
         if already_saved_links.count == links.count and !ENV['ALL']
           SAVE_STATUS::LINKS_PARTIALLY_SAVED
         else
