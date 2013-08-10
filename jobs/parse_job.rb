@@ -10,10 +10,11 @@ class ParseJob
   def perform(url_id)
     url = URL.get(url_id)
     begin
+      p "Trying to parse: #{url.url}"
       ArticleFetcher.fetch(url)
       p "Properly fetched #{url.url}"
     rescue Exception => e
-      logger.error(url)
+      logger.error(url.url)
       logger.error(e)
       url.update(error: true)
     end
