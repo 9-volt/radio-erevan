@@ -16,6 +16,9 @@ namespace :update_urls do
   task :publika do
     URLUpdaters::Publika.update!
   end
+  task :jurnal do
+    URLUpdaters::Jurnal.update!
+  end
 end
 
 namespace :fetch do
