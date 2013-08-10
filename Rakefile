@@ -1,6 +1,6 @@
 task :console do
   require 'irb'
-  require_relative "./db_setup"
+  require_relative "app"
 
   puts "Radio Erevean on the line, speak your mind!"
 
@@ -9,7 +9,7 @@ task :console do
 end
 
 namespace :update_urls do
-  require_relative "./db_setup"
+  require_relative "app"
   task :unimedia do
     URLUpdaters::Unimedia.update!
   end
@@ -22,7 +22,7 @@ namespace :update_urls do
 end
 
 namespace :fetch do
-  require_relative "./db_setup"
+  require_relative "app"
   task :everything do
     JobLauncher.launch!
   end
