@@ -1,4 +1,8 @@
 require 'virtus'
+require 'open-uri'
+require 'nokogiri'
+require 'json'
+
 module Parsers
 
   class Sentence
@@ -22,6 +26,7 @@ module Parsers
   class Base
     class << self
       def fetch(url)
+        @url = url
         doc = get_page(url)
 
         true_sentences = parse_sentences(doc).map do |s|

@@ -1,7 +1,5 @@
-require_relative 'parsers/base'
-require_relative 'parsers/unimedia'
-require_relative 'parsers/jurnal'
-require_relative 'parsers/publika'
-require_relative 'url-updaters/unimedia'
-require_relative 'url-updaters/publika'
+require 'require_all'
+
+require_rel 'parsers'
+require_rel 'url-updaters'
 require_relative 'fetchers/article_fetcher'

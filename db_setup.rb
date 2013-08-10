@@ -1,20 +1,17 @@
+ENV['EREVAN_ENV'] ||= 'development'
 require 'data_mapper'
 
 #DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/erevan')
+case ENV['EREVAN_ENV'].to_sym
+when :test
+  DataMapper.setup(:default, 'sqlite::memory:')
+else
+  DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/erevan')
+end
 
 #require everything!
 Dir[File.dirname(__FILE__) + "/models/*.rb"].each {|f| require f }
 
-#require jobs
-Dir[File.dirname(__FILE__) + "/jobs/*.rb"].each {|f| require f }
-
-#require launchers
-Dir[File.dirname(__FILE__) + "/launchers/*.rb"].each {|f| require f }
-
 #finalize
 DataMapper.finalize
 DataMapper.auto_upgrade!
-
-require_relative 'parsing/parsers'
-require_relative 'parsing/fetchers/unimedia'

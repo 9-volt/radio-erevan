@@ -1,7 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-require 'json'
-
 class Parsers::Publika < Parsers::Base
   class << self
     private
