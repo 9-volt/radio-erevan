@@ -13,7 +13,7 @@ class Parsers::Protv < Parsers::Base
     end
 
     def parse_sentences(doc)
-      doc.css('.continut').children.map(&:text).map {|s| s.split('.')}
+      doc.css('.continut').children.map(&:text).map {|s| s.split(/[\.!?]/)}
          .flatten.map(&:strip).select {|s| s.size > 1 }
     end
 

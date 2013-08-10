@@ -25,7 +25,7 @@ class Parsers::Unimedia < Parsers::Base
       end
 
       def parse_sentences(doc)
-        doc.css('#content .news-text').text.split('.').map(&:strip)
+        doc.css('#content .news-text').text.split(/[\.!?]/).map(&:strip)
       end
 
       def parse_title(doc)
