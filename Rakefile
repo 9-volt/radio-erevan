@@ -19,6 +19,9 @@ namespace :update_urls do
   task :jurnal do
     URLUpdaters::Jurnal.update!
   end
+  task :protv do
+    URLUpdaters::Protv.update!
+  end
 end
 
 namespace :fetch do
