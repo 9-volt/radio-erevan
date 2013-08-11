@@ -10,15 +10,23 @@ end
 
 namespace :update_urls do
   require_relative "app"
+
   task :unimedia do
     URLUpdaters::Unimedia.update!
   end
+
+  task :timpul do
+    URLUpdaters::Timpul.update!
+  end
+
   task :publika do
     URLUpdaters::Publika.update!
   end
+
   task :jurnal do
     URLUpdaters::Jurnal.update!
   end
+
   task :protv do
     URLUpdaters::Protv.update!
   end
