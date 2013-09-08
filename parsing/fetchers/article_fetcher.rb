@@ -16,10 +16,10 @@ class ArticleFetcher
     def dump_article!(article)
       a = Article.create!(source:    article.source,
                          time:      article.time,
-                         author:    article.author,
-                         category:  article.category,
-                         url:       article.url,
-                         title:     article.title)
+                         author:    article.author.strip,
+                         category:  article.category.strip,
+                         url:       article.url.strip,
+                         title:     article.title.strip)
 
       article.sentences.each do |s|
         Sentence.create(text: s.text, article: a)
