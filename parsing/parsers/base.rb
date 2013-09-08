@@ -35,10 +35,10 @@ module Parsers
 
         Parsers::Article.new(source: self.name.split('::').last.downcase,
                              time: parse_metadata(doc),
-                             author: parse_author(doc),
+                             author: parse_author(doc).gsub(/[[:space:]]/, ' '),
                              url: url,
-                             category: parse_category(doc),
-                             title: parse_title(doc),
+                             category: parse_category(doc).gsub(/[[:space:]]/, ' '),
+                             title: parse_title(doc).gsub(/[[:space:]]/, ' '),
                              sentences: true_sentences)
       end
 
