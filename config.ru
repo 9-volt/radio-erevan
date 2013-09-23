@@ -8,4 +8,6 @@ log = File.new("logs/sinatra.log", "a+")
 $stdout.reopen(log)
 $stderr.reopen(log)
 
-run Dash
+
+require 'sidekiq/web'
+run Rack::URLMap.new('/' => Dash, '/sidekiq' => Sidekiq::Web)
