@@ -20,3 +20,4 @@ gem 'clockwork'
 
 gem 'sinatra'
 gem 'haml'
+gem 'slim'
