@@ -1,0 +1,18 @@
+%h1 status
+
+%h4 Total URLs: #{@dash.all}
+%h4 Parsed URLs: #{@dash.parsed}
+%h4 Percentage: #{@dash.parsed_percentage.round(2)} %
+
+%hr
+
+%h2 Per source:
+
+- @dash.per_source.each do |s, num|
+  %h4 Total for #{s}: #{num}
+
+%hr
+
+- @dash.per_source_parsed.each do |s, num|
+  %h4 Parsed for #{s}: #{num} (#{(num.to_f / @dash.per_source[s] * 100).round(2)}) %
+
