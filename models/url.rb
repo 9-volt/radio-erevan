@@ -7,4 +7,9 @@ class URL
                                   # this is "unimedia", "jurnal", etc.
   property :parsed,     Boolean,  default: false, index: true
   property :error,      Boolean,  default: false
+
+  property :created_at, DateTime
+  property :created_on, Date
+  property :updated_at, DateTime
+  property :updated_on, Date
 end
