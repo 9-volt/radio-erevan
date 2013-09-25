@@ -1,5 +1,6 @@
 ENV['EREVAN_ENV'] ||= 'development'
 require 'data_mapper'
+require 'dm-timestamps'
 
 #DataMapper::Logger.new($stdout, :debug)
 case ENV['EREVAN_ENV'].to_sym
