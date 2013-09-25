@@ -9,5 +9,10 @@ class Article
   property :category, String
   property :title,    String,  length: 255
 
+  property :created_at, DateTime
+  property :created_on, Date
+  property :updated_at, DateTime
+  property :updated_on, Date
+
   has n, :sentences
 end
