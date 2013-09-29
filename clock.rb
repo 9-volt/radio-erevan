@@ -18,5 +18,3 @@ every(10.hours, 'Sync all the URLs') do
   URLUpdaters::Jurnal.update!
   URLUpdaters::Timpul.update!
 end
-
-

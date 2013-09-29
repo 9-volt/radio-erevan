@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+require 'clockwork'
+require 'daemons'
+require_relative '../app'
+
+include Clockwork
+
+handler do |job|
+  puts "Running #{job}"
+end
+
+DAEMON_OPTIONS = {
+  :log_output => true,
+  :dir_mode => :normal,
+  :dir => 'tmp/'
+}
+
+
+Daemons.run_proc 'erevan_fetcher', DAEMON_OPTIONS do
+  every(10.seconds, 'Fetch one article from each of the sources') do
+    JobLauncher.launch!
+  end
+
+  every(10.hours, 'Sync all the URLs') do
+    URLUpdaters::Unimedia.update!
+    URLUpdaters::Publika.update!
+    URLUpdaters::Protv.update!
+    URLUpdaters::Jurnal.update!
+    URLUpdaters::Timpul.update!
+  end
+end

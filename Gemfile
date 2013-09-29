@@ -17,6 +17,7 @@ gem 'rspec', '~> 2.13.0'
 gem 'lumberjack'
 gem 'require_all'
 gem 'clockwork'
+gem 'daemons'
 
 gem 'sinatra'
 gem 'haml'
