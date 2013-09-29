@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'clockwork'
 require 'daemons'
-require_relative '../app'
 
 include Clockwork
 
@@ -17,6 +16,8 @@ DAEMON_OPTIONS = {
 
 
 Daemons.run_proc 'erevan_fetcher', DAEMON_OPTIONS do
+  require_relative '../app'
+
   every(10.seconds, 'Fetch one article from each of the sources') do
     JobLauncher.launch!
   end
