@@ -24,5 +24,11 @@ class DashPresenter
   def per_source_parsed
     Hash[*URL.aggregate(:source, :all.count, conditions: ['parsed = ?', true]).flatten]
   end
+
+  def per_source_today
+    data = URL.all(:updated_on.gt => Date.today - 1, :parsed => true)
+              .aggregate(:source, :all.count)
+    Hash[*data]
+  end
 end
 

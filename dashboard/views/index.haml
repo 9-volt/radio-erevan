@@ -16,5 +16,10 @@
 - @dash.per_source_parsed.each do |s, num|
   %h4 Parsed for #{s}: #{num} (#{(num.to_f / @dash.per_source[s] * 100).round(2)}) %
 
+%hr
+
+- @dash.per_source_today.each do |s, num|
+  %h4 Today parsed for #{s}: #{num}
+
 %a{href: '/sidekiq'} Sidekiq
 
