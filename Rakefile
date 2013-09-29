@@ -1,6 +1,7 @@
 task :console do
   require 'irb'
   require_relative "app"
+  require_relative "dashboard/dash"
 
   puts "Radio Erevean on the line, speak your mind!"
 
